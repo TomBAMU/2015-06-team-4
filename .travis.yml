@@ -1,37 +1,26 @@
 language: node_js
-
 node_js:
 - '0.10'
-
 jdk:
 - oraclejdk7
-
 before_script:
 - npm install -g grunt-cli
-
 before_install:
-  # install Neo4j locally:
-  - wget dist.neo4j.org/neo4j-community-2.1.7-unix.tar.gz
-  - tar -xzf neo4j-community-2.1.7-unix.tar.gz
-  - neo4j-community-2.1.7/bin/neo4j start
-
+- wget dist.neo4j.org/neo4j-community-2.1.7-unix.tar.gz
+- tar -xzf neo4j-community-2.1.7-unix.tar.gz
+- neo4j-community-2.1.7/bin/neo4j start
 addons:
   sauce_connect: true
-
 before_deploy:
-  - neo4j-community-2.1.7/bin/neo4j stop
-  - rm -rf neo4j-community-2.1.7 neo4j-community-2.1.7-unix.tar.gz
-
+- neo4j-community-2.1.7/bin/neo4j stop
+- rm -rf neo4j-community-2.1.7 neo4j-community-2.1.7-unix.tar.gz
 deploy:
   provider: heroku
   app: movie-database-node
   skip_cleanup: true
   api_key:
-    secure: LfX4hB0xQv9z4ZD+Iiz0tffiNceHyB4/wfeFacra7m9xLpjtpqOmBvbQGzl3 3EGek2clup/ri2RHHQm5QCqK5L8ohptvHSoBusghHmXyV80knIb8mlnpmwMe
-      7Vs7v9wdALHudWPHly9pN0OZHxYsRprQc8R6b2rowAdMxzMraDg=
-
+    secure: Ir+Z2DBvIV9YqvLEvkXmtjj6asw3nTcuEexs4Fdw/wukL/n+yFYt0prpXJkbAikMGSxhkNSGqZSz5d+ZgpRLme64Efqonn4LefC083gRAzlbUqK5YurmAardx/cugUr5Pviftnc0S7DzD8Y/2Us9DQF+/rt32dX/2rcrenZcoKGdRQ96XHaFr68ZWeCAOHrgMTakWCPglpqqyZG4LllmITna1oH7tRQ0qoMNsbouMy3CiuwaHfGMk5GhJTryL63McRUDsPD+6HYmClKBaI+DyCHMsLtCXMRZaoGxLYMbY6rynPpqu7A18i2u28r9BKYsTH/Rbd1m3BCeRe6ISrJQaDPeyppoIAdtCm+ccHfgSRRs5c6PT02wsyKajfbAoy2SBbrfkxz7QTyjblVctYJSoSbQHhnhR98MsRZX+1uVcmcUjMwOhg8sysSPnNFth5wtaRSwYH0zxkRgpZDmsyqDHex6EcadX4LDwgW9gDCAMTA6UIqH5jWP1175QrUvVKF/GU/OIHMuXZ3rgOZWRBu2uRuAaULjVAhuHtUXmlLmwl2iH8IzB7s5he+MWDwZtwfmwLs9cpBnP5NUoLOgnQ27r25zzIjI6Cq2NchDszo19uJO1K2WXyxhmun6wwVXs6bLxuUEXH79COV9bh7lFtgzh303vscloY+ftNgZ6O8/XJI=
 env:
   global:
-  - secure: Z2rM2Fbhaa/9UO8w8wXbxkgm6onNMwe7eu81G0w5Brhi+ZQbZMVNIjVBcg2cs0oQdF2JiA+iWSM9fwDKriZQVbbscbBiWqn76GEG8uBQthkC5jU+bMP4yaQYVW5VzeF7ADc+FA0mTDshfYWWuhfI8a/l9mWgdAe+2qM0NETA+WA=
-  - secure: YcUv/8DgUrLxjZ0po91oH8Z+GSzsF71qbDUf23ncUBEw/Ui0Stcyd/62i+JXwwlg5zUCaAsN5G0YrVjMGmlbP3yAy6LolChfU3oSCkkjfJlf4WMDQD3ykSl0Euyhgxr2d6UHEfBz4wK1sU7IU+ONB9mcNeAn0bxfu5quYKkq+iI=
-
+  - secure: ED07zbXArZQX//h/nRRD0eyLsxo2GwL39njQ1p5cCL9Ftdra3f4p9FYGi8ktrEE/FGvSBfu/R/s/XK2ifh+SAauwfAZ2TQPTviiU1TlHVO1p6b7FkqZXccDkAT8W3NQczk5Qgy99pt2ToPkO6e29KCzgoyIFFZgELbcMafuG4t5Z+qB64pwGGW6U/R4KF02GWAq//AjSFB5lgcOWDvhtZ/DmMXt4UAgAQzJ5IGFHe7BWG1B8U6XX0E9Vw5aQQrADdrcZOEveWu8Fc7DbM2LvLtapBNcd26waswtRBVsvYGji/vQdEJiy/E27hPn6paLLiMx9on4KsBdftrKNp6UlvfB4fOCHdWI9Vl2cTwXxKHZAbIAwUtx1BPCvv1V6xaY/pFo2NvztyOZ0bEW/LpSSoH6S154D0zTs4wXVjfDuyv/h6dxF8HmHcv4hcgOZk6EcpE6YYkkXzZZa77CBATm9WSw6DTNx+B1BOvOhTbD5Foomxby6ooMLCHhd3S6IhcXLGR57Ah3/PQyGMk8VvYGVMVmODrXOdK1bJHWZqGTqYQtFiMJc6TgOFssaFco7yTG3fCrmKxV6pNivYSzcQ4Wp/7Olyewh0DyWroek33x8WaO/d6nxbaSel1NA/qjj2ZQ6nY7sFdUUDcMfK2cyKaElK9ElwVzTOWJbPRtL9yhu3HY=
+  - secure: St1sw325s0nYzaHEkpcA0YO0Hcj56+mbYJtx5x92Pm2VBqTI+3QTRvfV2rlYSiQ8EjFuOIEVBCDCUQ4qoHf+FrKOgxpjNu7gb8Df9onJUujx227XNpbGKljMNwATNXhKjW5EqrdQfn4Twimu9254wxt2MoRGEMpABtq8Lm2Wjc/GOH5zNjaT5gH1BfuHUkyfxWVvY9ibqRymzPClJsoIH2LIiMF3zFhgsKOgRgbJv4XSoKNHANgps1GO5s7Lcb1VOcWO6htsOdQjHp7SqPa4QmS+bnHe/Eg3xWBljkgjH5s6o+pVIIHFgeQz6vYBZIN+enTqPxWH0z5scQgKiG0d4w8oMnwJffplK6lFqLWgZv1a0YC6h0zLD+PbdkoUSNxvurnzUZcUW1k8reH8gcV0W1imZmJ1c0TNcIwC6z9MZGUIrDu6l/j8DqawQL1LaKGI++qslCzfqJ5ROpW/f1ZaIsrgGydDAbqL6IGlsOlLQs16f6Rt4kDcar9I6pIqATcp+3NZym3JKa/wEOv/564XQdsNAHDBFxPdBqttdpO8GIdfN8YUs5PAf8Xvvk4hrnRwujjwZ2RnU9E7Ija9gJU1+E9ZTaAD7YkYXGrP5PH13d446j36w39qb3BSoA9y7SIkU8unxVuFvI4rzZGsmC5KQxeS7g+r+PzXdXn8G+aQQFg=
