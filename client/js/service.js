@@ -12,4 +12,14 @@
             return $http.get('/movies/' + id);
         };
     });
+
+    app.service('ActorService', function($http) {
+        this.loadList = function() {
+            return $http.get('/actors');
+        };
+
+        this.load = function(id) {
+            return $http.get('/actors/' + id);
+        };
+    });
 })();
