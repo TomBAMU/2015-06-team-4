@@ -110,9 +110,9 @@
         function($scope, $http, $location) {
             $scope.actor = {};
             $scope.save = function (actor) {
-                $http.post('/actor', actor)
+                $http.post('/actors', actor)
                 .success(function(res) {
-                    $location.path('/actor/' + res.id);
+                    $location.path('/actors/' + res.id);
                 });
             };
         });
@@ -129,9 +129,9 @@
         });
 
     app.controller('ActorEditController',
-        function($scope, $http, $location, movie) {
+        function($scope, $http, $location, actor) {
 
-            $scope.movie = movie.data;
+            $scope.actor = actor.data;
             $scope.save = function () {
                 $http.put('/actors/' + $scope.actor.id, $scope.actor)
                 .success(function (res) {

@@ -61,6 +61,26 @@ angular
             actorList: actorResolve
         }
     })
+    .when('/actors/:id', {
+        controller: 'ActorDetailController',
+        resolve: {
+            movie: function(ActorService, $route) {
+                var actorId = $route.current.params.id;
+                return ActorService.load(actorId);
+            }
+        },
+        templateUrl: '/partial/actors/detail.html'
+    })
+    .when('/actors/:id/edit', {
+        controller: 'ActorEditController',
+        resolve: {
+            movie: function(ActorService, $route) {
+                var actorId = $route.current.params.id;
+                return ActorService.load(actorId);
+            }
+        },
+        templateUrl: '/partial/movies/edit.html'
+    })
     .when('/404', {
         controller: 'NotFoundController',
         templateUrl: '/partial/notFound.html'
