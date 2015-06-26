@@ -96,6 +96,56 @@
         };
     });
 
+    app.controller('ActorsListController',
+        function($scope, $location, actorList) {
+            $scope.actors = actorList.data;
+            $scope.add = function () {
+                $location.path('/actors/new');
+            };
+
+            $scope.predicate = 'title';
+            $scope.reverse = false;
+            $scope.order = function(predicate) {
+                $scope.predicate = predicate;
+                $scope.reverse = !$scope.reverse;
+            };
+        }
+    );
+
+    app.controller('ActorAddController',
+        function($scope, $http, $location) {
+        $scope.actor = {};
+        $scope.save = function (actor) {
+            $http.post('/actor', actor)
+            .success(function(res) {
+                $location.path('/actor/' + res.id);
+            });
+        };
+    });
+
+    app.controller('ActorDetailController',
+        function($scope, $http, $location, actor) {
+
+        $scope.actor = actor.data;
+        $scope.delete = function () {
+            $http.delete('/actors/' + $scope.actor.id).success(function (res) {
+                $location.path('/actors');
+            });
+        };
+    });
+
+    app.controller('ActorEditController',
+        function($scope, $http, $location, movie) {
+
+        $scope.movie = movie.data;
+        $scope.save = function () {
+            $http.put('/actors/' + $scope.actor.id, $scope.actor)
+            .success(function (res) {
+                $location.path('/actors/' + $scope.actor.id);
+            });
+        };
+    });
+
     function ProblemController($scope, $location) {
         $scope.culprit = $location.search().culprit || 'unknown beast';
     }
