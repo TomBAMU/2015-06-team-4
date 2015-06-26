@@ -5,6 +5,42 @@
 
     app.controller('AppController', function($scope) {
         $scope.title = 'Team 4 : The Movie Database';
+
+        $scope.tabs=[
+          {
+            name: 'Home',
+            href: '',
+            active: true
+          },
+          {
+            name: 'Movies',
+            href: 'movies',
+            active: false
+          },
+          {
+            name: 'Actors',
+            href: 'actors',
+            active: false
+          }
+        ];
+
+        $scope.switchActive = function(currentTab){
+          angular.forEach($scope.tabs, function(tab){
+            if(tab.name !== currentTab.name){
+              tab.active = false;
+            } else {
+              tab.active = true;
+            }
+          });
+          /*
+          for(var tab in $scope.tabs){
+            if(tab.name !== currentTab.name){
+              tab.active = false;
+            } else {
+              tab.active = true;
+            }
+          }*/
+        }
     });
 
     app.controller('WelcomeController', function() {
