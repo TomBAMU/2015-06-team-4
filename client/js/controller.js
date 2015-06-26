@@ -12,19 +12,11 @@
 
     app.controller('MoviesListController',
         function($scope, $location, movieList) {
-<<<<<<< HEAD
             $scope.movies = movieList.data;
             $scope.searchTerm = '';
             $scope.add = function () {
                 $location.path('/movies/new');
             };
-=======
->>>>>>> refs/remotes/origin/master
-
-        $scope.movies = movieList.data;
-        $scope.add = function () {
-            $location.path('/movies/new');
-        };
     });
 
     app.controller('MoviesAddController',
