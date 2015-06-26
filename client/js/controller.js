@@ -48,12 +48,19 @@
 
     app.controller('MoviesListController',
         function($scope, $location, movieList) {
+            $scope.movies = movieList.data;
+            $scope.add = function () {
+                $location.path('/movies/new');
+            };
 
-        $scope.movies = movieList.data;
-        $scope.add = function () {
-            $location.path('/movies/new');
-        };
-    });
+            $scope.predicate = 'title';
+            $scope.reverse = false;
+            $scope.order = function(predicate) {
+                $scope.predicate = predicate;
+                $scope.reverse = !$scope.reverse;
+            };
+        }
+    );
 
     app.controller('MoviesAddController',
         function($scope, $http, $location) {
