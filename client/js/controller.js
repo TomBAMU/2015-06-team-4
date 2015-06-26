@@ -12,12 +12,17 @@
 
     app.controller('MoviesListController',
         function($scope, $location, movieList) {
+            $scope.movies = movieList.data;
+            $scope.add = function () {
+                $location.path('/movies/new');
+            };
 
-        $scope.movies = movieList.data;
-        $scope.add = function () {
-            $location.path('/movies/new');
-        };
-    });
+            $scope.reverse = false;
+            $scope.order = function() {
+                $scope.reverse = !$scope.reverse;
+            };
+        }
+    );
 
     app.controller('MoviesAddController',
         function($scope, $http, $location) {
