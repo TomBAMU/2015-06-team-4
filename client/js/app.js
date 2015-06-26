@@ -5,8 +5,13 @@ angular
 
     $routeProvider
     .when('/', {
-        controller: 'WelcomeController',
-        templateUrl: '/partial/index.html'
+        controller: 'MoviesListController',
+        templateUrl: '/partial/index.html',
+        resolve: {
+            movieList: function(MovieService) {
+                return MovieService.loadList();
+            },
+        },
     })
     .when('/movies', {
         controller: 'MoviesListController',
