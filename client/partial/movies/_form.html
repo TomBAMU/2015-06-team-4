@@ -1,4 +1,4 @@
-<form class="form-horizontal">
+<form name="movieform" class="form-horizontal">
   <div class="control-group">
     <label class="control-label" for="inputTitle">Title</label>
     <div class="controls">
@@ -24,17 +24,22 @@
   <div class="control-group">
     <label class="control-label" for="inputYear">Year</label>
     <div class="controls">
-      <input type="text"
+      <input type="number"
              id="inputYear"
              name="year"
              class="input-block-level"
-             ng-model="movie.year">
+             ng-model="movie.year"
+             ng-change="validate()">
       </input>
+      <div role="alert">
+        <span ng-show="!valid" class="error">Year out of range ! Should be between 1900 and 2020</span>
+      </div>
     </div>
   <div class="form-actions">
     <button type="submit"
             class="btn btn-primary"
-            ng-click="save(movie)">
+            ng-click="save(movie)"
+            ng-disabled="!valid || movieform.$invalid">
       Save
     </button>
     <a href="/movies/{{movie.id}}" class="btn">Cancel</a>

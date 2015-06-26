@@ -69,10 +69,10 @@ describe('Movies', function() {
             'girlfriend of four years, wants more from their relationship.', '2012');
         newMovie.addMovie('The Meerkats', 'An inspiring exploration of one family\'s ' +
             'resilience and fortitude shot using innovative and ' +
-            'groundbreaking filming techniques.', '2025');
+            'groundbreaking filming techniques.', '2018');
         newMovie.addMovie('Undisputed II: Last Man Standing', 'Sequel to the 2002 ' +
             'film. This time, Heavyweight Champ George "Iceman" Chambers is ' +
-            'sent to a Russian Jail on trumped-up drug charges.', '1833');
+            'sent to a Russian Jail on trumped-up drug charges.', '1933');
 
         movieOverview.open();
         movieOverview.movieTitles.then(function(elements) {
