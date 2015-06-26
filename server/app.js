@@ -46,6 +46,12 @@ app.post('/movies', routes.movies.addMovie);
 app.get('/movies/:id', routes.movies.getMovie);
 app.put('/movies/:id', routes.movies.updateMovie);
 app.delete('/movies/:id', routes.movies.deleteMovie);
+// actors
+app.get('/actors', routes.actors.getActors);
+app.post('/actors', routes.actors.addActor);
+app.get('/actors/:id', routes.actors.getActor);
+app.put('/actors/:id', routes.actors.updateActor);
+app.delete('/actors/:id', routes.actors.deleteActor);
 
 // Serve static files
 app.use(serveStatic('client'));
@@ -56,4 +62,3 @@ if (process.env.NODE_ENV === 'development') {
     console.log('app is in dev mode');
     app.use(errorhandler());
 }
-
