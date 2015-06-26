@@ -7,6 +7,10 @@ angular
         return MovieService.loadList();
     };
 
+    var actorResolve = function(ActorService) {
+        return ActorService.loadList();
+    };
+
     $routeProvider
     .when('/', {
         controller: 'MoviesListController',
@@ -45,6 +49,13 @@ angular
             }
         },
         templateUrl: '/partial/movies/edit.html'
+    })
+    .when('/actors', {
+        controller: 'ActorsListController',
+        templateUrl: '/partial/actors/list.html',
+        resolve: {
+            actorList: actorResolve
+        }
     })
     .when('/404', {
         controller: 'NotFoundController',
