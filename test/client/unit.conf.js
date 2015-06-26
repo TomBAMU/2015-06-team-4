@@ -13,11 +13,15 @@ module.exports = function(config) {
       'node_modules/angular-route/angular-route.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'client/js/**/*.js',
-      'test/client/unit/**/*.spec.js'
+      'test/client/unit/**/*.spec.js',
+      'node_modules/textangular/dist/textAngular-rangy.min.js',
+      'node_modules/textangular/dist/textAngular-sanitize.min.js',
+      'node_modules/textangular/dist/textAngular.min.js'
     ],
 
     // list of files to exclude
-    exclude : [],
+    exclude : [
+    ],
 
     // use dolts reporter, as travis terminal does not support escaping sequences
     // possible values: 'dots', 'progress', 'junit', 'teamcity'
