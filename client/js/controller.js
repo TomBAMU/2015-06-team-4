@@ -17,8 +17,10 @@
                 $location.path('/movies/new');
             };
 
+            $scope.predicate = 'title';
             $scope.reverse = false;
-            $scope.order = function() {
+            $scope.order = function(predicate) {
+                $scope.predicate = predicate;
                 $scope.reverse = !$scope.reverse;
             };
         }
