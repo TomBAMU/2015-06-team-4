@@ -18,7 +18,7 @@ describe('controller', function () {
         it('should set a title', function () {
             var $scope = {};
             var controller = $controller('AppController', { $scope: $scope });
-            expect($scope.title).to.equal('The Movie Database');
+            expect($scope.title).to.equal('Team 4 : The Movie Database');
         });
     });
 
