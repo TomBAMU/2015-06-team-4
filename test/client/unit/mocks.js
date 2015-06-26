@@ -1,1 +1,1 @@
-angular.module('textAngular', [])
+angular.module('textAngular', []);
