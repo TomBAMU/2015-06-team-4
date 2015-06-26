@@ -1,5 +1,5 @@
 angular
-.module('MovieDatabase', ['ngRoute'])
+.module('MovieDatabase', ['ngRoute','MovieDatabaseFilters'])
 .config(function ($routeProvider, $locationProvider, $httpProvider, $provide) {
     'use strict';
 
@@ -24,10 +24,7 @@ angular
     })
     .when('/movies/new', {
         controller: 'MoviesAddController',
-        templateUrl: '/partial/movies/add.html',
-        resolve: {
-            movieList: movieResolve
-        }
+        templateUrl: '/partial/movies/add.html'
     })
     .when('/movies/:id', {
         controller: 'MovieDetailController',
@@ -35,8 +32,7 @@ angular
             movie: function(MovieService, $route) {
                 var movieId = $route.current.params.id;
                 return MovieService.load(movieId);
-            },
-            movieList: movieResolve
+            }
         },
         templateUrl: '/partial/movies/detail.html'
     })
@@ -46,8 +42,7 @@ angular
             movie: function(MovieService, $route) {
                 var movieId = $route.current.params.id;
                 return MovieService.load(movieId);
-            },
-            movieList: movieResolve
+            }
         },
         templateUrl: '/partial/movies/edit.html'
     })
@@ -62,9 +57,6 @@ angular
     .otherwise({
         redirectTo: function () {
             return '/404?culprit=client';
-        },
-        resolve: {
-            movieList: movieResolve
         }
     });
 
