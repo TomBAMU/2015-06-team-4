@@ -3,28 +3,31 @@ angular
 .config(function ($routeProvider, $locationProvider, $httpProvider, $provide) {
     'use strict';
 
+    var movieResolve = function(MovieService) {
+        return MovieService.loadList();
+    };
+
     $routeProvider
     .when('/', {
         controller: 'MoviesListController',
         templateUrl: '/partial/index.html',
         resolve: {
-            movieList: function(MovieService) {
-                return MovieService.loadList();
-            },
-        },
+            movieList: movieResolve
+        }
     })
     .when('/movies', {
         controller: 'MoviesListController',
+        templateUrl: '/partial/movies/list.html',
         resolve: {
-            movieList: function(MovieService) {
-                return MovieService.loadList();
-            },
-        },
-        templateUrl: '/partial/movies/list.html'
+            movieList: movieResolve
+        }
     })
     .when('/movies/new', {
         controller: 'MoviesAddController',
-        templateUrl: '/partial/movies/add.html'
+        templateUrl: '/partial/movies/add.html',
+        resolve: {
+            movieList: movieResolve
+        }
     })
     .when('/movies/:id', {
         controller: 'MovieDetailController',
@@ -33,6 +36,7 @@ angular
                 var movieId = $route.current.params.id;
                 return MovieService.load(movieId);
             },
+            movieList: movieResolve
         },
         templateUrl: '/partial/movies/detail.html'
     })
@@ -43,6 +47,7 @@ angular
                 var movieId = $route.current.params.id;
                 return MovieService.load(movieId);
             },
+            movieList: movieResolve
         },
         templateUrl: '/partial/movies/edit.html'
     })
@@ -57,6 +62,9 @@ angular
     .otherwise({
         redirectTo: function () {
             return '/404?culprit=client';
+        },
+        resolve: {
+            movieList: movieResolve
         }
     });
 
