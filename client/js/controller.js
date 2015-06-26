@@ -4,7 +4,7 @@
     var app = angular.module('MovieDatabase');
 
     app.controller('AppController', function($scope) {
-        $scope.title = 'The Movie Database';
+        $scope.title = 'Team 4 : The Movie Database';
     });
 
     app.controller('WelcomeController', function() {
@@ -60,5 +60,3 @@
     app.controller('NotFoundController', ProblemController);
     app.controller('ErrorController', ProblemController);
 })();
-
-
