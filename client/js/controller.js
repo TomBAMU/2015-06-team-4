@@ -49,6 +49,7 @@
     app.controller('MoviesListController',
         function($scope, $location, movieList) {
             $scope.movies = movieList.data;
+            $scope.searchTerm = '';
             $scope.add = function () {
                 $location.path('/movies/new');
             };
@@ -102,4 +103,5 @@
 
     app.controller('NotFoundController', ProblemController);
     app.controller('ErrorController', ProblemController);
+
 })();
