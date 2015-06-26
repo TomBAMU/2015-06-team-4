@@ -50,6 +50,10 @@ angular
         },
         templateUrl: '/partial/movies/edit.html'
     })
+    .when('/actors/new', {
+        controller: 'ActorAddController',
+        templateUrl: '/partial/actors/add.html'
+    })
     .when('/actors', {
         controller: 'ActorsListController',
         templateUrl: '/partial/actors/list.html',
